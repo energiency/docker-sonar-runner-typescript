@@ -1,14 +1,15 @@
 FROM openjdk:8
 
-ENV SONAR_SCANNER_VERSION 2.8
+ENV SONAR_SCANNER_VERSION 3.3.0.1492-linux
 
 RUN apt-get update
 RUN apt-get install unzip -y
 
-RUN curl -sLO https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-${SONAR_SCANNER_VERSION}.zip
-RUN unzip sonar-scanner-${SONAR_SCANNER_VERSION}
+RUN curl -sLO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip
+RUN unzip sonar-scanner-cli-${SONAR_SCANNER_VERSION}
+RUN ls /
 RUN chmod +x /sonar-scanner-${SONAR_SCANNER_VERSION}/bin/sonar-scanner
-RUN cd /usr/bin && ln -s /sonar-scanner-${SONAR_SCANNER_VERSION}/bin/sonar-scanner sonar-scanner
+RUN cd /usr/bin && ln -s /${SONAR_SCANNER_VERSION}/bin/sonar-scanner sonar-scanner
 
 # Install nodeJS
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
