@@ -9,7 +9,7 @@ RUN curl -sLO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/so
 RUN unzip sonar-scanner-cli-${SONAR_SCANNER_VERSION}
 RUN ls /
 RUN chmod +x /sonar-scanner-${SONAR_SCANNER_VERSION}/bin/sonar-scanner
-RUN cd /usr/bin && ln -s /${SONAR_SCANNER_VERSION}/bin/sonar-scanner sonar-scanner
+RUN cd /usr/bin && ln -s /sonar-scanner-${SONAR_SCANNER_VERSION}/bin/sonar-scanner sonar-scanner
 
 # Install nodeJS
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
